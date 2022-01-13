@@ -10,13 +10,13 @@
     "yeoman-generator"
   ],
   "files": [
-    "app",
-    "model"
+    "app"
   ],
   "author": "thunk",
   "license": "ISC",
   "dependencies": {
     "inversify": "^6.0.1",
-    "yeoman-generator": "^5.4.2"
+    "yeoman-generator": "^5.4.2",
+    "yeoman-option-or-prompt": "^2.0.1"
   }
 }

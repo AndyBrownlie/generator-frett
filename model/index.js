@@ -1,23 +1,32 @@
 var Generator = require('yeoman-generator');
+const _ = require('lodash');
+const extend = _.merge;
+var OptionOrPrompt = require('yeoman-option-or-prompt');
 
 module.exports = class extends Generator {
 
   constructor(args, options) {
     super(args, options);
-
-    this.option('name', {
-      type: String,
-      required: true,
-      desc: 'Name provided for model'
-    });
+    this.optionOrPrompt = OptionOrPrompt;
   }
 
-  prompting() {
-    this.log('prompting - model', this.options.name);
+  async prompting() {
+  
+    const input = await this.optionOrPrompt([           
+      {
+          type: "input",
+          name: "featureName",
+          message: "Enter feature name",
+          default: this.appname
+      }
+    ]);
+
+    this.props = extend(this.props, input);
   }
 
   writing() {
-    this.log('writing - model', this.options.name);
+    this.log('props', this.props.featureName);
+    this.log('options', this.options.featureName);
   }
 
 };
