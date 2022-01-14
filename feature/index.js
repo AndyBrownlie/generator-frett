@@ -5,8 +5,8 @@ var OptionOrPrompt = require('yeoman-option-or-prompt');
 
 module.exports = class extends Generator {
 
-  constructor(args, opts) {
-    super(args, opts);
+  constructor(args, options) {
+    super(args, options);
     this.optionOrPrompt = OptionOrPrompt;
   }
 
@@ -14,16 +14,17 @@ module.exports = class extends Generator {
   
     const input = await this.optionOrPrompt([           
       {
-        type: "input",
-        name: "name",
-        message: "Enter name",
-        default: this.appname
-      },
-      {
           type: "input",
           name: "featureName",
           message: "Enter feature name",
-      }
+          default: this.options.name
+      },
+      {
+        type: "input",
+        name: "modelName",
+        message: "Enter model name",
+        default: this.options.name
+    }
     ]);
 
     this.props = extend(this.props, input);
@@ -32,9 +33,10 @@ module.exports = class extends Generator {
   default() {
     console.log(this.props);
     
-    this.composeWith(require.resolve('../feature'), {
-        featureName: this.props.featureName
+    this.composeWith(require.resolve('../model'), {
+        modelName: this.props.modelName
     });
   
   }
-}
+
+};

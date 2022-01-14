@@ -10,7 +10,9 @@
     "yeoman-generator"
   ],
   "files": [
-    "app"
+    "app",
+    "feature",
+    "model"
   ],
   "author": "thunk",
   "license": "ISC",

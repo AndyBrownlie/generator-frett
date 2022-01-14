@@ -15,8 +15,8 @@ module.exports = class extends Generator {
     const input = await this.optionOrPrompt([           
       {
           type: "input",
-          name: "featureName",
-          message: "Enter feature name",
+          name: "modelName",
+          message: "Enter model name",
           default: this.appname
       }
     ]);
@@ -25,8 +25,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.log('props', this.props.featureName);
-    this.log('options', this.options.featureName);
+    this.log('props.modelName:', this.props.modelName);
+    this.log('options.modelName:', this.options.modelName);
   }
 
 };
